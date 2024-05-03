@@ -9,9 +9,10 @@ Please watch the .env.exampl to make your own .env file
 
 #### How to use
 1. First, clone the repo from github
-2. Check that if there are any changes in the init.sql file
-3. If there are, delete the container and volume from the docker, then use the instruction below in the folder
-4. 
+2. Add an **.env** file yourself, take .env.example for example
+3. Check that if there are any changes in the init.sql file
+4. If there are, delete the container and volume from the docker, then use the instruction below in the folder
+5. 
 ```sh
 docker-compose up --build -d
 ```
