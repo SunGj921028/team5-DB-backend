@@ -18,3 +18,4 @@ docker-compose up --build -d
 ```
 5. If there are no change, just re-open the continer, and develop starting from the last movement.
 6. If you want't to change the Database given to all the user, just adds the instruction into the init.sql, and tells your coworker and PM.
+7. Please Add data into database called Team5DBFinal.
