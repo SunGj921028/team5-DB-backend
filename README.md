@@ -3,7 +3,7 @@
 ## **This is a repo for building the container and set the environment for mysql**
 ### Introduction
 ```sh
-Please watch the .env.exampl to make your own .env file
+Please watch the .env.example to make your own .env file
 ```
 ---
 
