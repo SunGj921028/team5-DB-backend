@@ -10,7 +10,7 @@ Please watch the .env.exampl to make your own .env file
 #### How to use
 1. First, clone the repo from github
 2. Add an **.env** file yourself, take .env.example for example
-3. Check that if there are any changes in the init.sql file
+3. Check that if there are any changes in the init.sql file (you can just use ```sh git pull``` to get the newest before you start to do something in you local git)
 4. If there are, delete the container and volume from the docker, then use the instruction below in the folder
 5. 
 ```sh
