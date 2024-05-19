@@ -19,7 +19,7 @@ VALUES("91", "1034679", "000", "2008-01-01");
 
 -- Below you can just add your own SQL order to create the table in the database Team5DBFinal.
 -- For example, you can comment below bitch table if you want
--- USE Team5DBFinal;
+USE Team5DBFinal;
 /*CREATE TABLE bitch (
   fuck VARCHAR(20) NOT NULL,
   PRIMARY KEY(fuck)
