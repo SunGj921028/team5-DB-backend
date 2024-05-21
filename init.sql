@@ -19,6 +19,7 @@ VALUES("91", "1034679", "000", "2008-01-01");
 
 -- Below you can just add your own SQL order to create the table in the database Team5DBFinal.
 -- For example, you can comment below bitch table if you want
+CREATE DATABASE IF NOT EXISTS `Team5DBFinal`;
 USE Team5DBFinal;
 /*CREATE TABLE bitch (
   fuck VARCHAR(20) NOT NULL,
@@ -83,10 +84,9 @@ CREATE TABLE IF NOT EXISTS product(
 );
 
 CREATE TABLE IF NOT EXISTS orders(
-	order_ID INT NOT NULL AUTO_INCREMENT,
+	order_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_ID INT NOT NULL,
     status INT DEFAULT 0,
-	PRIMARY KEY(user_ID,order_ID),
     FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
 );
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS  paying(
 );
 
 -- the likes table denotes the like from the user for specifing product
-CREATE TABLE IF NOT EXISTS  liking_list(
+CREATE TABLE IF NOT EXISTS  likes(
     user_ID INT NOT NULL,
     product_ID INT NOT NULL,
     PRIMARY KEY(user_ID, product_ID),
@@ -138,11 +138,6 @@ CREATE TABLE IF NOT EXISTS  order_item(
     FOREIGN KEY(product_ID) REFERENCES product(product_ID) ON DELETE CASCADE
 );
 
-INSERT INTO User
-VALUES(-1,'admin','admin','1000-01-10','0','0','1000-01-10',0);
-
-
-
 -- trigger part below
 -- user_age_enro:
 DELIMITER $$
@@ -159,7 +154,6 @@ BEGIN
 END;
 $$
 DELIMITER ;
-
 
 -- product_stock:
 DELIMITER $$
@@ -182,6 +176,17 @@ END;
 $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE RegisterMember (account VARCHAR(50), password  CHAR(60), enrollment_date DATE, address VARCHAR(120), email_address VARCHAR(80), birthdate DATE)
+ BEGIN
+	INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) 
+	VALUES(account, password, enrollment_date, address, email_address, birthdate); 
+ END;
+$$
+DELIMITER ;
+
+-- CALL RegisterMember ('faker','lck666777','2024-05-19','666777','666777@gmail.com','9999-04-25');
+
 -- avg_score:
 /*DELIMITER $$
 create trigger avg_score
@@ -196,4 +201,68 @@ DELIMITER ;*/
 
 -- test data
 -- INSERT INTO `User` VALUES("91", "1034679", "000", "2008-01-01", "123456", "123456", "2008-01-06", "5");
+
+INSERT INTO User VALUES(-1,'admin','admin','1000-01-10','0','0','1000-01-10',0);
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('amber','qqq123','2024-05-17','123','123@gmail.com','2002-05-10');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('brown','www456','2024-05-17','456','456@yahoo.com.tw','2005-08-17');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
+
+INSERT INTO user_phone VALUES(1,'0987563258');
+INSERT INTO user_phone VALUES(2,'0912345678');
+INSERT INTO user_phone VALUES(3,'0951113355');
+INSERT INTO user_phone VALUES(4,'0945678139');
+INSERT INTO user_phone VALUES(5,'0945337788');
+
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('pen','1','1000','100','pencil','50',0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('eraser','1','1000','50','eraser','65',2,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('ruler','1','600','75','ruler','110',0,5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('paper','1','1000','1','paper','1000',0,4);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('magzine','1','100','150','book','40',0,5);
+
+INSERT INTO cart_item VALUES('1','1','10','100');
+INSERT INTO cart_item VALUES('1','4','10','1');
+INSERT INTO cart_item VALUES('1','5','10','150');
+INSERT INTO cart_item VALUES('3','3','10','75');
+INSERT INTO cart_item VALUES('3','2','10','50');
+
+INSERT INTO likes VALUES('3','2');
+INSERT INTO likes VALUES('2','1');
+INSERT INTO likes VALUES('5','4');
+INSERT INTO likes VALUES('5','5');
+INSERT INTO likes VALUES('1','3');
+
+INSERT INTO orders VALUES('1','3','0');
+INSERT INTO orders VALUES('2','5','0');
+INSERT INTO orders VALUES('3','4','0');
+INSERT INTO orders VALUES('4','1','0');
+INSERT INTO orders VALUES('5','2','0');
+
+INSERT INTO order_item VALUES('5','2','10','50');
+INSERT INTO order_item VALUES('4','3','10','75');
+INSERT INTO order_item VALUES('4','1','10','100');
+INSERT INTO order_item VALUES('3','4','10','1');
+INSERT INTO order_item VALUES('3','5','10','150');
+
+
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('3','123','777','1510','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','999','1750','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','elon','500','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','123','200','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','456','900','2024-05-19');
+
+
+INSERT INTO paying VALUES('3','1');
+INSERT INTO paying VALUES('4','2');
+INSERT INTO paying VALUES('5','3');
+INSERT INTO paying VALUES('1','4');
+INSERT INTO paying VALUES('2','5');
+
+INSERT INTO search_history VALUES('1','pen');
+INSERT INTO search_history VALUES('1','ruler');
+INSERT INTO search_history VALUES('2','pen');
+INSERT INTO search_history VALUES('2','paper');
+INSERT INTO search_history VALUES('4','magzine');
+
 
