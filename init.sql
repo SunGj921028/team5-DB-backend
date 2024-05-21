@@ -246,18 +246,17 @@ INSERT INTO order_item VALUES('2','1','10','100');
 INSERT INTO order_item VALUES('3','4','10','1');
 INSERT INTO order_item VALUES('1','5','10','150');
 
-INSERT INTO paying VALUES('3','1');
-INSERT INTO paying VALUES('4','2');
-INSERT INTO paying VALUES('5','3');
-INSERT INTO paying VALUES('1','4');
-INSERT INTO paying VALUES('2','5');
-
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('3','123','777','10','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','123','750','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','456','500','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','999','1500','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','elon','1000','2024-05-19');
 
+INSERT INTO paying VALUES('3','1');
+INSERT INTO paying VALUES('4','2');
+INSERT INTO paying VALUES('5','3');
+INSERT INTO paying VALUES('1','4');
+INSERT INTO paying VALUES('2','5');
 
 INSERT INTO search_history VALUES('1','pen');
 INSERT INTO search_history VALUES('1','ruler');
