@@ -84,9 +84,10 @@ CREATE TABLE IF NOT EXISTS product(
 );
 
 CREATE TABLE IF NOT EXISTS orders(
-	order_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	order_ID INT NOT NULL AUTO_INCREMENT,
     user_ID INT NOT NULL,
     status INT DEFAULT 0,
+    PRIMARY KEY(order_ID, user_ID),
     FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
 );
 
@@ -107,8 +108,8 @@ CREATE TABLE IF NOT EXISTS  paying(
     FOREIGN KEY(payment_ID) REFERENCES paying_info(payment_ID) ON DELETE CASCADE
 );
 
--- the likes table denotes the like from the user for specifing product
-CREATE TABLE IF NOT EXISTS  likes(
+-- the liking_list table denotes the liking from the user for specifing product
+CREATE TABLE IF NOT EXISTS  liking_list(
     user_ID INT NOT NULL,
     product_ID INT NOT NULL,
     PRIMARY KEY(user_ID, product_ID),
@@ -215,11 +216,11 @@ INSERT INTO user_phone VALUES(3,'0951113355');
 INSERT INTO user_phone VALUES(4,'0945678139');
 INSERT INTO user_phone VALUES(5,'0945337788');
 
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('pen','1','1000','100','pencil','50',0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('eraser','1','1000','50','eraser','65',2,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('ruler','1','600','75','ruler','110',0,5);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('paper','1','1000','1','paper','1000',0,4);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('magzine','1','100','150','book','40',0,5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('pen'    ,'1','1000','100','pencil','50',0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('eraser' ,'1','1000','50','eraser','65',0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('ruler'  ,'1','600','75','ruler','110',0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper','1000',0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('magzine','1','10000','150','book','40',0,0);
 
 INSERT INTO cart_item VALUES('1','1','10','100');
 INSERT INTO cart_item VALUES('1','4','10','1');
@@ -227,11 +228,11 @@ INSERT INTO cart_item VALUES('1','5','10','150');
 INSERT INTO cart_item VALUES('3','3','10','75');
 INSERT INTO cart_item VALUES('3','2','10','50');
 
-INSERT INTO likes VALUES('3','2');
-INSERT INTO likes VALUES('2','1');
-INSERT INTO likes VALUES('5','4');
-INSERT INTO likes VALUES('5','5');
-INSERT INTO likes VALUES('1','3');
+INSERT INTO liking_list VALUES('3','2');
+INSERT INTO liking_list VALUES('2','1');
+INSERT INTO liking_list VALUES('5','4');
+INSERT INTO liking_list VALUES('5','5');
+INSERT INTO liking_list VALUES('1','3');
 
 INSERT INTO orders VALUES('1','3','0');
 INSERT INTO orders VALUES('2','5','0');
@@ -241,23 +242,22 @@ INSERT INTO orders VALUES('5','2','0');
 
 INSERT INTO order_item VALUES('5','2','10','50');
 INSERT INTO order_item VALUES('4','3','10','75');
-INSERT INTO order_item VALUES('4','1','10','100');
+INSERT INTO order_item VALUES('2','1','10','100');
 INSERT INTO order_item VALUES('3','4','10','1');
-INSERT INTO order_item VALUES('3','5','10','150');
-
-
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('3','123','777','1510','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','999','1750','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','elon','500','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','123','200','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','456','900','2024-05-19');
-
+INSERT INTO order_item VALUES('1','5','10','150');
 
 INSERT INTO paying VALUES('3','1');
 INSERT INTO paying VALUES('4','2');
 INSERT INTO paying VALUES('5','3');
 INSERT INTO paying VALUES('1','4');
 INSERT INTO paying VALUES('2','5');
+
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('3','123','777','10','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','123','750','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','456','500','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','999','1500','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','elon','1000','2024-05-19');
+
 
 INSERT INTO search_history VALUES('1','pen');
 INSERT INTO search_history VALUES('1','ruler');
