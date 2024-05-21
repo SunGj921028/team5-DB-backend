@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS  paying(
     order_ID INT NOT NULL,
     payment_ID INT NOT NULL,
     PRIMARY KEY(order_ID, payment_ID),
-    FOREIGN KEY(order_ID) REFERENCES orders(user_ID) ON DELETE CASCADE,
+    FOREIGN KEY(order_ID) REFERENCES orders(order_ID) ON DELETE CASCADE,
     FOREIGN KEY(payment_ID) REFERENCES paying_info(payment_ID) ON DELETE CASCADE
 );
 
