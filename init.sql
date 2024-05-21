@@ -216,11 +216,38 @@ INSERT INTO user_phone VALUES(3,'0951113355');
 INSERT INTO user_phone VALUES(4,'0945678139');
 INSERT INTO user_phone VALUES(5,'0945337788');
 
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('pen'    ,'1','1000','100','pencil','50',0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('eraser' ,'1','1000','50','eraser','65',0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('ruler'  ,'1','600','75','ruler','110',0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper','1000',0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('magzine','1','10000','150','book','40',0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('pen'    ,'1','1000','100','pencil',50,0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('eraser' ,'1','1000','50','eraser',65,0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('ruler'  ,'1','600','75','ruler',110,0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper',1000,0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('magzine','1','10000','150','book',40,0,0);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('notebook', '0.1', '500', '5', 'stationery', 200, 10, 4.5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('smartphone', '0.2', '200', '800', 'electronics', 150, 100, 4.8);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('laptop', '0.15', '100', '1200', 'electronics', 80, 75, 4.7);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('headphones', '0.25', '300', '150', 'electronics', 120, 50, 4.6);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('coffee mug', '0.05', '1000', '10', 'home', 500, 30, 4.2);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('desk lamp', '0.1', '150', '30', 'home', 200, 40, 4.3);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('water bottle', '0.1', '800', '15', 'sports', 300, 60, 4.4);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('yoga mat', '0.2', '400', '25', 'sports', 250, 70, 4.5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('running shoes', '0.15', '250', '100', 'sports', 180, 90, 4.6);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('blender', '0.1', '100', '50', 'kitchen', 90, 25, 4.4);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('toaster', '0.2', '200', '35', 'kitchen', 120, 35, 4.3);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('vacuum cleaner', '0.3', '75', '200', 'home', 60, 20, 4.7);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('air purifier', '0.1', '50', '150', 'home', 40, 15, 4.8);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('backpack', '0.15', '600', '40', 'accessories', 250, 55, 4.5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('watch', '0.1', '300', '200', 'accessories', 180, 70, 4.6);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('tablet', '0.2', '150', '400', 'electronics', 90, 65, 4.6);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('gaming mouse', '0.15', '500', '60', 'electronics', 300, 120, 4.7);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('electric kettle', '0.1', '400', '25', 'kitchen', 220, 80, 4.4);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('skincare set', '0.2', '300', '50', 'beauty', 180, 90, 4.5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('office chair', '0.25', '100', '150', 'furniture', 70, 45, 4.6);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('fitness tracker', '0.15', '250', '100', 'electronics', 130, 85, 4.8);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('e-book reader', '0.1', '200', '120', 'electronics', 90, 50, 4.5);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('wireless charger', '0.2', '300', '20', 'electronics', 150, 75, 4.3);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('gaming chair', '0.25', '50', '250', 'furniture', 30, 20, 4.7);
+INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('portable speaker', '0.15', '350', '80', 'electronics', 180, 110, 4.6);
+
+
 
 INSERT INTO cart_item VALUES('1','1','10','100');
 INSERT INTO cart_item VALUES('1','4','10','1');
