@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS  paying(
 );
 
 -- the likes table denotes the like from the user for specifing product
-CREATE TABLE IF NOT EXISTS  likes(
+CREATE TABLE IF NOT EXISTS  liking_list(
     user_ID INT NOT NULL,
     product_ID INT NOT NULL,
     PRIMARY KEY(user_ID, product_ID),
