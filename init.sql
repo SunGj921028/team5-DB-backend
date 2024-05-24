@@ -41,7 +41,7 @@ INSERT INTO bitch
 VALUES("Notpotato");*/
 
 -- table part below
-CREATE TABLE IF NOT EXISTS User(
+CREATE TABLE IF NOT EXISTS user(
 	user_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     account VARCHAR(50) NOT NULL UNIQUE,
     password CHAR(60) NOT NULL, -- password hash at frontend then pass in
