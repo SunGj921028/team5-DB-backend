@@ -41,7 +41,7 @@ INSERT INTO bitch
 VALUES("Notpotato");*/
 
 -- table part below
-CREATE TABLE IF NOT EXISTS user(
+CREATE TABLE IF NOT EXISTS User(
 	user_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     account VARCHAR(50) NOT NULL UNIQUE,
     password CHAR(60) NOT NULL, -- password hash at frontend then pass in
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS user_phone(
 	user_ID INT NOT NULL,
     phone_number VARCHAR(18) NOT NULL,-- phone number storage here
     PRIMARY KEY(user_ID,phone_number),
-    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
+    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
     -- when delete user, the relate phone_num will be gone
 );
 
@@ -74,28 +74,30 @@ CREATE TABLE IF NOT EXISTS product(
 	product_ID INT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(80) NOT NULL,
     discount DOUBLE DEFAULT 1, -- front end decide value and pass in
-    stock INT DEFAULT 0, -- auto decrease with trigger "product_stock" when the order is placed
-    price DECIMAL(8,2) DEFAULT 0,
+    original_price DECIMAL(8,2) DEFAULT 0,
+    selling_price DECIMAL(8,2) DEFAULT 0, -- update by trigger "after_price"
     tags VARCHAR(80),
+	stock INT DEFAULT 0, -- auto decrease with trigger "product_stock" when the order is placed
     sales INT DEFAULT 0, -- auto increase with trigger "product_stock" when the order is placed
     likes INT DEFAULT 0, -- front end pass if anyone likes then +1, or if cancel then -1
-    avg_score DOUBLE -- front end pass score 
+    avg_score DOUBLE, -- front end pass score 
+    num_of_comment INT DEFAULT 0
     -- auto update with trigger "product_score" when score is added
 );
 
 CREATE TABLE IF NOT EXISTS orders(
-	order_ID INT NOT NULL UNIQUE AUTO_INCREMENT,
+	order_ID INT NOT NULL AUTO_INCREMENT,
     user_ID INT NOT NULL,
     status INT DEFAULT 0,
     PRIMARY KEY(order_ID, user_ID),
-    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
+    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS search_history(
 	user_ID INT NOT NULL,
 	keyword VARCHAR(80),
     PRIMARY KEY(user_ID,keyword),
-    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
+    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
 	-- if user got remove, delete whole history to that user
 );
 
@@ -113,7 +115,7 @@ CREATE TABLE IF NOT EXISTS  liking_list(
     user_ID INT NOT NULL,
     product_ID INT NOT NULL,
     PRIMARY KEY(user_ID, product_ID),
-    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE,
+    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE,
     FOREIGN KEY(product_ID) REFERENCES product(product_ID) ON DELETE CASCADE
 );
 
@@ -124,7 +126,7 @@ CREATE TABLE IF NOT EXISTS  cart_item(
     quantity INT NOT NULL,
     prices DECIMAL(8,2),
     PRIMARY KEY(cart_ID, product_ID),
-    FOREIGN KEY(cart_ID) REFERENCES user(user_ID) ON DELETE CASCADE,
+    FOREIGN KEY(cart_ID) REFERENCES User(user_ID) ON DELETE CASCADE,
     FOREIGN KEY(product_ID) REFERENCES product(product_ID) ON DELETE CASCADE
 );
 
@@ -143,7 +145,7 @@ CREATE TABLE IF NOT EXISTS  order_item(
 -- user_age_enro:
 DELIMITER $$
 CREATE TRIGGER user_age_enro
-BEFORE INSERT ON user
+BEFORE INSERT ON User
 FOR EACH ROW
 BEGIN
 	SET NEW.enrollment_date=now();
@@ -177,10 +179,21 @@ END;
 $$
 DELIMITER ;
 
+-- after_price:
+DELIMITER $$
+CREATE TRIGGER after_price
+BEFORE INSERT ON product
+FOR EACH ROW
+BEGIN
+    SET NEW.selling_price=NEW.discount*NEW.original_price;
+END;
+$$
+DELIMITER ;
+
 DELIMITER $$
 CREATE PROCEDURE RegisterMember (account VARCHAR(50), password  CHAR(60), enrollment_date DATE, address VARCHAR(120), email_address VARCHAR(80), birthdate DATE)
  BEGIN
-	INSERT INTO user(account, password, enrollment_date, address, email_address, birthdate) 
+	INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) 
 	VALUES(account, password, enrollment_date, address, email_address, birthdate); 
  END;
 $$
@@ -188,27 +201,15 @@ DELIMITER ;
 
 -- CALL RegisterMember ('faker','lck666777','2024-05-19','666777','666777@gmail.com','9999-04-25');
 
--- avg_score:
-/*DELIMITER $$
-create trigger avg_score
-after insert on products
-for each row
-begin
-	--todo
-end;
-$$
-DELIMITER ;*/
-
-
 -- test data
 -- INSERT INTO `User` VALUES("91", "1034679", "000", "2008-01-01", "123456", "123456", "2008-01-06", "5");
 
-INSERT INTO user VALUES(-1,'admin','admin','1000-01-10','0','0','1000-01-10',0);
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('amber','qqq123','2024-05-17','123','123@gmail.com','2002-05-10');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('brown','www456','2024-05-17','456','456@yahoo.com.tw','2005-08-17');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
+INSERT INTO User VALUES(-1,'admin','admin','1000-01-10','0','0','1000-01-10',0);
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('amber','qqq123','2024-05-17','123','123@gmail.com','2002-05-10');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('brown','www456','2024-05-17','456','456@yahoo.com.tw','2005-08-17');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
+INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
 
 INSERT INTO user_phone VALUES(1,'0987563258');
 INSERT INTO user_phone VALUES(2,'0912345678');
@@ -216,38 +217,11 @@ INSERT INTO user_phone VALUES(3,'0951113355');
 INSERT INTO user_phone VALUES(4,'0945678139');
 INSERT INTO user_phone VALUES(5,'0945337788');
 
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('pen'    ,'1','1000','100','pencil',50,0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('eraser' ,'1','1000','50','eraser',65,0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('ruler'  ,'1','600','75','ruler',110,0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper',1000,0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('magzine','1','10000','150','book',40,0,0);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('notebook', '0.1', '500', '5', 'stationery', 200, 10, 4.5);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('smartphone', '0.2', '200', '800', 'electronics', 150, 100, 4.8);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('laptop', '0.15', '100', '1200', 'electronics', 80, 75, 4.7);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('headphones', '0.25', '300', '150', 'electronics', 120, 50, 4.6);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('coffee mug', '0.05', '1000', '10', 'home', 500, 30, 4.2);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('desk lamp', '0.1', '150', '30', 'home', 200, 40, 4.3);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('water bottle', '0.1', '800', '15', 'sports', 300, 60, 4.4);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('yoga mat', '0.2', '400', '25', 'sports', 250, 70, 4.5);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('running shoes', '0.15', '250', '100', 'sports', 180, 90, 4.6);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('blender', '0.1', '100', '50', 'kitchen', 90, 25, 4.4);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('toaster', '0.2', '200', '35', 'kitchen', 120, 35, 4.3);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('vacuum cleaner', '0.3', '75', '200', 'home', 60, 20, 4.7);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('air purifier', '0.1', '50', '150', 'home', 40, 15, 4.8);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('backpack', '0.15', '600', '40', 'accessories', 250, 55, 4.5);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('watch', '0.1', '300', '200', 'accessories', 180, 70, 4.6);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('tablet', '0.2', '150', '400', 'electronics', 90, 65, 4.6);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('gaming mouse', '0.15', '500', '60', 'electronics', 300, 120, 4.7);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('electric kettle', '0.1', '400', '25', 'kitchen', 220, 80, 4.4);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('skincare set', '0.2', '300', '50', 'beauty', 180, 90, 4.5);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('office chair', '0.25', '100', '150', 'furniture', 70, 45, 4.6);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('fitness tracker', '0.15', '250', '100', 'electronics', 130, 85, 4.8);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('e-book reader', '0.1', '200', '120', 'electronics', 90, 50, 4.5);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('wireless charger', '0.2', '300', '20', 'electronics', 150, 75, 4.3);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('gaming chair', '0.25', '50', '250', 'furniture', 30, 20, 4.7);
-INSERT INTO product (product_name, discount, stock, price, tags, sales, likes, avg_score) VALUES('portable speaker', '0.15', '350', '80', 'electronics', 180, 110, 4.6);
-
-
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('pen'    ,'0.7','1000','100','pencil','50',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('eraser' ,'0.2','1000','50','eraser','65',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('ruler'  ,'0.1','600','75','ruler','110',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper','1000',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('magzine','0.9','10000','150','book','40',0,0);
 
 INSERT INTO cart_item VALUES('1','1','10','100');
 INSERT INTO cart_item VALUES('1','4','10','1');
