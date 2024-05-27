@@ -222,6 +222,27 @@ INSERT INTO product (product_name, discount, stock, original_price, tags, sales,
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('ruler'  ,'0.1','600','75','ruler','110',0,0);
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper','1000',0,0);
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('magzine','0.9','10000','150','book','40',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('notebook','0.5','800','200','stationery','75',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('marker','0.3','500','120','marker','90',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('stapler','0.4','300','180','office','60',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('glue','0.2','700','50','adhesive','80',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('scissors','0.6','400','250','tool','45',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('sharpener','0.1','1000','30','sharpener','70',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('folder','0.3','900','60','organizer','85',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('tape','0.5','600','40','adhesive','50',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('sticker','0.2','1200','20','decorative','55',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('highlighter','0.4','550','70','marker','65',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('post-it','0.3','950','30','note','95',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('binder','0.5','450','220','organizer','40',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('calculator','0.7','350','300','tool','35',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('whiteboard','0.6','250','500','board','25',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('envelope','0.2','800','15','mail','85',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('label','0.1','750','25','organizer','75',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('paperclip','0.2','1000','5','stationery','95',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('file','0.4','500','40','organizer','65',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('calendar','0.5','300','100','planner','30',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('clipboard','0.3','400','80','organizer','45',0,0);
+
 
 INSERT INTO cart_item VALUES('1','1','10','100');
 INSERT INTO cart_item VALUES('1','4','10','1');
