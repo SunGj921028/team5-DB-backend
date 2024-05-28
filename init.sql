@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS user_phone(
 	user_ID INT NOT NULL,
     phone_number VARCHAR(18) NOT NULL,-- phone number storage here
     PRIMARY KEY(user_ID,phone_number),
-    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
+    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
     -- when delete user, the relate phone_num will be gone
 );
 
@@ -90,14 +90,14 @@ CREATE TABLE IF NOT EXISTS orders(
     user_ID INT NOT NULL,
     status INT DEFAULT 0,
     PRIMARY KEY(order_ID, user_ID),
-    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
+    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS search_history(
 	user_ID INT NOT NULL,
 	keyword VARCHAR(80),
     PRIMARY KEY(user_ID,keyword),
-    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE
+    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
 	-- if user got remove, delete whole history to that user
 );
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS  liking_list(
     user_ID INT NOT NULL,
     product_ID INT NOT NULL,
     PRIMARY KEY(user_ID, product_ID),
-    FOREIGN KEY(user_ID) REFERENCES User(user_ID) ON DELETE CASCADE,
+    FOREIGN KEY(user_ID) REFERENCES user(user_ID) ON DELETE CASCADE,
     FOREIGN KEY(product_ID) REFERENCES product(product_ID) ON DELETE CASCADE
 );
 
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS  cart_item(
     quantity INT NOT NULL,
     prices DECIMAL(8,2),
     PRIMARY KEY(cart_ID, product_ID),
-    FOREIGN KEY(cart_ID) REFERENCES User(user_ID) ON DELETE CASCADE,
+    FOREIGN KEY(cart_ID) REFERENCES user(user_ID) ON DELETE CASCADE,
     FOREIGN KEY(product_ID) REFERENCES product(product_ID) ON DELETE CASCADE
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS  order_item(
 -- user_age_enro:
 DELIMITER $$
 CREATE TRIGGER user_age_enro
-BEFORE INSERT ON User
+BEFORE INSERT ON user
 FOR EACH ROW
 BEGIN
 	SET NEW.enrollment_date=now();
@@ -193,7 +193,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE RegisterMember (account VARCHAR(50), password  CHAR(60), enrollment_date DATE, address VARCHAR(120), email_address VARCHAR(80), birthdate DATE)
  BEGIN
-	INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) 
+	INSERT INTO user(account, password, enrollment_date, address, email_address, birthdate) 
 	VALUES(account, password, enrollment_date, address, email_address, birthdate); 
  END;
 $$
@@ -204,12 +204,12 @@ DELIMITER ;
 -- test data
 -- INSERT INTO `User` VALUES("91", "1034679", "000", "2008-01-01", "123456", "123456", "2008-01-06", "5");
 
-INSERT INTO User VALUES(-1,'admin','admin','1000-01-10','0','0','1000-01-10',0);
-INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('amber','qqq123','2024-05-17','123','123@gmail.com','2002-05-10');
-INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('brown','www456','2024-05-17','456','456@yahoo.com.tw','2005-08-17');
-INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
-INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
-INSERT INTO User (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
+INSERT INTO user VALUES(-1,'admin','admin','1000-01-10','0','0','1000-01-10',0);
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('amber','qqq123','2024-05-17','123','123@gmail.com','2002-05-10');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('brown','www456','2024-05-17','456','456@yahoo.com.tw','2005-08-17');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
 
 INSERT INTO user_phone VALUES(1,'0987563258');
 INSERT INTO user_phone VALUES(2,'0912345678');
