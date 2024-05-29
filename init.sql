@@ -190,6 +190,17 @@ END;
 $$
 DELIMITER ;
 
+-- delete_order_n_payinginfo:
+DELIMITER $$
+CREATE TRIGGER delete_order_n_payinginfo
+AFTER DELETE ON paying
+FOR EACH ROW
+BEGIN
+    DELETE FROM paying_info WHERE payment_ID=OLD.paying.payment_ID;
+END;
+$$
+DELIMITER ;
+
 DELIMITER $$
 CREATE PROCEDURE RegisterMember (account VARCHAR(50), password  CHAR(60), enrollment_date DATE, address VARCHAR(120), email_address VARCHAR(80), birthdate DATE)
  BEGIN
