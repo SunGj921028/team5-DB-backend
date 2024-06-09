@@ -200,23 +200,23 @@ INSERT INTO user (account, password, enrollment_date, address, email_address, bi
 INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
 INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
 INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','2024-05-17','lolololol','nah@gmail.com','1800-08-17');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('▆㎡αΘペヶﾀ@h.com','▆㎡αΘペヶﾀ@h.com','2024-05-17','idk','no@t.com','1999-06-12');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('wdym','ayyobro','2024-05-17','ohio','elon@gmail.com','1912-12-12');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('notpotato','notpotato','2024-05-17','taiwan','sansgu119@gmail.com','2000-04-01');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('miku','3939','2024-05-17','japan','negi@negi.com','2007-08-31');
-INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('_____','_____','2024-05-17','_____','no@t.com','2009-01-31');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('aaaaa','aaaaa','2024-05-17','America','nah@gmail.com','1800-08-17');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('imgood','notgood','2024-05-17','UK','john@hotmail.com','1999-06-12');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('sanford','hanginthere1','2024-05-17','Ohio','sanford@gmail.com','1912-12-12');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('notpotato','notpotato','2024-05-17','Taiwan','sansgu119@gmail.com','2000-04-01');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('miku','3939beam','2024-05-17','Japan','negi@gmail.com','2007-08-31');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('hank','hankstrongest1','2024-05-17','Nevada','hank123@yahoo.com','2009-01-31');
 
 INSERT INTO user_phone VALUES(1,'0987563258');
 INSERT INTO user_phone VALUES(2,'0912345678');
 INSERT INTO user_phone VALUES(3,'0951113355');
 INSERT INTO user_phone VALUES(4,'0945678139');
 INSERT INTO user_phone VALUES(5,'0945337788');
-INSERT INTO user_phone VALUES(6,'0999999999');
-INSERT INTO user_phone VALUES(7,'0000000000');
+INSERT INTO user_phone VALUES(6,'0745889711');
+INSERT INTO user_phone VALUES(7,'0912554388');
 INSERT INTO user_phone VALUES(8,'0943337658');
 INSERT INTO user_phone VALUES(9,'0345778908');
-INSERT INTO user_phone VALUES(10,'0539333988');
+INSERT INTO user_phone VALUES(10,'0563383988');
 INSERT INTO user_phone VALUES(11,'0967890232');
 
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('pen'    ,'0.7','1000','100','pencil','50',0,0);
@@ -484,14 +484,14 @@ INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','456','500','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','999','1500','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','elon','1000','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('8','123','ohio','4520','2022-03-10');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('10','258','taiwan','6000','2020-02-02');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('9','555','lolololol','700','2022-05-09');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('6','999','ohio','1950','2024-04-01');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('12','787','_____','250','2019-03-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('13','258','japan','25','2022-09-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('7','333','ohio','7500','2023-11-27');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('11','258','japan','1800','2023-08-31');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('8','123','Ohio','4520','2022-03-10');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('10','258','Taiwan','6000','2020-02-02');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('9','555','America','700','2022-05-09');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('6','999','Ohio','1950','2024-04-01');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('12','787','Nevada','250','2019-03-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('13','258','Japan','25','2022-09-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('7','333','Ohio','7500','2023-11-27');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('11','258','Japan','1800','2023-08-31');
 
 
 INSERT INTO paying (order_ID, payment_ID) VALUES('3','1');
