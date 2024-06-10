@@ -421,11 +421,11 @@ INSERT INTO product (product_name, discount, stock, original_price, tags, sales,
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('floor lamp','0.6','25','1500','home decor','3',0,0);
 
 
-INSERT INTO cart_item VALUES('1','1','10','100');
-INSERT INTO cart_item VALUES('1','4','10','1');
-INSERT INTO cart_item VALUES('1','5','10','150');
+INSERT INTO cart_item VALUES('1','1','10','700');
+INSERT INTO cart_item VALUES('1','4','10','10');
+INSERT INTO cart_item VALUES('1','5','10','1350');
 INSERT INTO cart_item VALUES('3','3','10','75');
-INSERT INTO cart_item VALUES('3','2','10','50');
+INSERT INTO cart_item VALUES('3','2','10','100');
 
 INSERT INTO liking_list VALUES('3','2');
 INSERT INTO liking_list VALUES('2','1');
