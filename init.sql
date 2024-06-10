@@ -158,27 +158,6 @@ END;
 $$
 DELIMITER ;
 
--- product_stock:
-DELIMITER $$
-CREATE TRIGGER product_stock
-AFTER INSERT ON order_item
-FOR EACH ROW
-BEGIN
-	SET @sal=0;
-    SELECT quantity INTO @sal FROM
-    order_item NATURAL JOIN product AS op
-    WHERE op.product_ID=NEW.product_ID;
-    UPDATE product
-    SET stock=stock-@sal
-    WHERE product.product_ID=NEW.product_ID;
-    
-    UPDATE product
-    SET sales=sales+@sal
-    WHERE product.product_ID=NEW.product_ID;
-END;
-$$
-DELIMITER ;
-
 -- after_price:
 DELIMITER $$
 CREATE TRIGGER after_price
@@ -221,12 +200,24 @@ INSERT INTO user (account, password, enrollment_date, address, email_address, bi
 INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('cindy','lpl999','2024-05-17','999','999@gapps.ntnu.edu.tw','1999-02-19');
 INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('youma','lck777','2024-05-17','777','777@gmail.com','1995-04-25');
 INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('elon','elan456','2024-05-17','elon','elon@gmail.com','1900-08-17');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('aaaaa','aaaaa','2024-05-17','America','nah@gmail.com','1800-08-17');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('imgood','notgood','2024-05-17','UK','john@hotmail.com','1999-06-12');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('sanford','hanginthere1','2024-05-17','Ohio','sanford@gmail.com','1912-12-12');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('notpotato','notpotato','2024-05-17','Taiwan','sansgu119@gmail.com','2000-04-01');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('miku','3939beam','2024-05-17','Japan','negi@gmail.com','2007-08-31');
+INSERT INTO user (account, password, enrollment_date, address, email_address, birthdate) VALUES('hank','hankstrongest1','2024-05-17','Nevada','hank123@yahoo.com','2009-01-31');
 
 INSERT INTO user_phone VALUES(1,'0987563258');
 INSERT INTO user_phone VALUES(2,'0912345678');
 INSERT INTO user_phone VALUES(3,'0951113355');
 INSERT INTO user_phone VALUES(4,'0945678139');
 INSERT INTO user_phone VALUES(5,'0945337788');
+INSERT INTO user_phone VALUES(6,'0745889711');
+INSERT INTO user_phone VALUES(7,'0912554388');
+INSERT INTO user_phone VALUES(8,'0943337658');
+INSERT INTO user_phone VALUES(9,'0345778908');
+INSERT INTO user_phone VALUES(10,'0563383988');
+INSERT INTO user_phone VALUES(11,'0967890232');
 
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('pen'    ,'0.7','1000','100','pencil','50',0,0);
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('eraser' ,'0.2','1000','50','eraser','65',0,0);
@@ -430,11 +421,11 @@ INSERT INTO product (product_name, discount, stock, original_price, tags, sales,
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('floor lamp','0.6','25','1500','home decor','3',0,0);
 
 
-INSERT INTO cart_item VALUES('1','1','10','100');
-INSERT INTO cart_item VALUES('1','4','10','1');
-INSERT INTO cart_item VALUES('1','5','10','150');
+INSERT INTO cart_item VALUES('1','1','10','700');
+INSERT INTO cart_item VALUES('1','4','10','10');
+INSERT INTO cart_item VALUES('1','5','10','1350');
 INSERT INTO cart_item VALUES('3','3','10','75');
-INSERT INTO cart_item VALUES('3','2','10','50');
+INSERT INTO cart_item VALUES('3','2','10','100');
 
 INSERT INTO liking_list VALUES('3','2');
 INSERT INTO liking_list VALUES('2','1');
@@ -442,29 +433,80 @@ INSERT INTO liking_list VALUES('5','4');
 INSERT INTO liking_list VALUES('5','5');
 INSERT INTO liking_list VALUES('1','3');
 
-INSERT INTO orders VALUES('1','3','0');
-INSERT INTO orders VALUES('2','5','0');
-INSERT INTO orders VALUES('3','4','0');
-INSERT INTO orders VALUES('4','1','0');
-INSERT INTO orders VALUES('5','2','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('1','3','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('2','5','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('3','4','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('4','1','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('5','2','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('6','8','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('7','8','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('8','8','1');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('9','6','1');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('10','9','1');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('11','10','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('12','11','0');
+INSERT INTO orders (order_ID, user_ID, status) VALUES('13','10','1');
 
-INSERT INTO order_item VALUES('5','2','10','50');
-INSERT INTO order_item VALUES('4','3','10','75');
-INSERT INTO order_item VALUES('2','1','10','100');
-INSERT INTO order_item VALUES('3','4','10','1');
-INSERT INTO order_item VALUES('1','5','10','150');
+
+
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('5','2','10','50');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('4','3','10','75');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('2','1','10','100');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('3','4','10','1');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('1','5','10','150');
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','7','15','120');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','11','1','30');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','12','2','60');
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('7','200','5','1500');
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','194','2','1500');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','13','13','40');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','6','5','200');
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('9','190','1','700');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('10','189','2','3000');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('11','18','6','300');
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('12','24','1','100');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('12','26','1','150');
+
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('13','178','1','15');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('13','179','1','10');
+
+
+
 
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('3','123','777','10','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','123','750','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','456','500','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','999','1500','2024-05-19');
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','elon','1000','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('8','123','Ohio','4520','2022-03-10');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('10','258','Taiwan','6000','2020-02-02');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('9','555','America','700','2022-05-09');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('6','999','Ohio','1950','2024-04-01');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('12','787','Nevada','250','2019-03-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('13','258','Japan','25','2022-09-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('7','333','Ohio','7500','2023-11-27');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('11','258','Japan','1800','2023-08-31');
 
-INSERT INTO paying VALUES('3','1');
-INSERT INTO paying VALUES('4','2');
-INSERT INTO paying VALUES('5','3');
-INSERT INTO paying VALUES('1','4');
-INSERT INTO paying VALUES('2','5');
+
+INSERT INTO paying (order_ID, payment_ID) VALUES('3','1');
+INSERT INTO paying (order_ID, payment_ID) VALUES('4','2');
+INSERT INTO paying (order_ID, payment_ID) VALUES('5','3');
+INSERT INTO paying (order_ID, payment_ID) VALUES('1','4');
+INSERT INTO paying (order_ID, payment_ID) VALUES('2','5');
+INSERT INTO paying (order_ID, payment_ID) VALUES('8','6');
+INSERT INTO paying (order_ID, payment_ID) VALUES('10','7');
+INSERT INTO paying (order_ID, payment_ID) VALUES('9','8');
+INSERT INTO paying (order_ID, payment_ID) VALUES('6','9');
+INSERT INTO paying (order_ID, payment_ID) VALUES('12','10');
+INSERT INTO paying (order_ID, payment_ID) VALUES('13','11');
+INSERT INTO paying (order_ID, payment_ID) VALUES('7','12');
+INSERT INTO paying (order_ID, payment_ID) VALUES('11','13');
 
 INSERT INTO search_history VALUES('1','pen');
 INSERT INTO search_history VALUES('1','ruler');
