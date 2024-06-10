@@ -421,11 +421,11 @@ INSERT INTO product (product_name, discount, stock, original_price, tags, sales,
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('floor lamp','0.6','25','1500','home decor','3',0,0);
 
 
-INSERT INTO cart_item VALUES('1','1','10','700');
-INSERT INTO cart_item VALUES('1','4','10','10');
-INSERT INTO cart_item VALUES('1','5','10','1350');
-INSERT INTO cart_item VALUES('3','3','10','75');
-INSERT INTO cart_item VALUES('3','2','10','100');
+INSERT INTO cart_item VALUES('1','1','10','70');
+INSERT INTO cart_item VALUES('1','4','10','1');
+INSERT INTO cart_item VALUES('1','5','10','135');
+INSERT INTO cart_item VALUES('3','3','10','7.5');
+INSERT INTO cart_item VALUES('3','2','10','10');
 
 INSERT INTO liking_list VALUES('3','2');
 INSERT INTO liking_list VALUES('2','1');
@@ -450,48 +450,48 @@ INSERT INTO orders (order_ID, user_ID, status) VALUES('13','10','1');
 
 
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('5','2','10','50');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('4','3','10','75');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('2','1','10','100');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('5','2','10','10');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('4','3','10','7.5');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('2','1','10','70');
 INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('3','4','10','1');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('1','5','10','150');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('1','5','10','135');
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','7','15','120');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','11','1','30');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','12','2','60');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','7','15','36');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','11','1','3');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('6','12','2','18');
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('7','200','5','1500');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('7','200','5','900');
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','194','2','1500');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','13','13','40');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','6','5','200');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','194','2','900');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','13','13','20');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('8','6','5','100');
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('9','190','1','700');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('10','189','2','3000');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('11','18','6','300');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('9','190','1','350');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('10','189','2','600');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('11','18','6','210');
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('12','24','1','100');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('12','26','1','150');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('12','24','1','50');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('12','26','1','75');
 
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('13','178','1','15');
-INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('13','179','1','10');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('13','178','1','4.5');
+INSERT INTO order_item (order_ID, product_ID, quantity, prices) VALUES('13','179','1','2');
 
 
 
 
 INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('3','123','777','10','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','123','750','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','456','500','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','999','1500','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','elon','1000','2024-05-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('8','123','Ohio','4520','2022-03-10');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('10','258','Taiwan','6000','2020-02-02');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('9','555','America','700','2022-05-09');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('6','999','Ohio','1950','2024-04-01');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('12','787','Nevada','250','2019-03-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('13','258','Japan','25','2022-09-19');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('7','333','Ohio','7500','2023-11-27');
-INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('11','258','Japan','1800','2023-08-31');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('4','456','123','75','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('5','789','456','100','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('1','963','999','1350','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('2','258','elon','700','2024-05-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('8','123','Ohio','2560','2022-03-10');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('10','258','Taiwan','1200','2020-02-02');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('9','555','America','350','2022-05-09');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('6','999','Ohio','579','2024-04-01');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('12','787','Nevada','125','2019-03-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('13','258','Japan','6.5','2022-09-19');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('7','333','Ohio','4500','2023-11-27');
+INSERT INTO paying_info (bank_account, bank_num, delivering_address, total_price, time_slot) VALUES('11','258','Japan','1260','2023-08-31');
 
 
 INSERT INTO paying (order_ID, payment_ID) VALUES('3','1');
