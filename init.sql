@@ -201,11 +201,11 @@ INSERT INTO user_phone VALUES(9,'0345778908');
 INSERT INTO user_phone VALUES(10,'0563383988');
 INSERT INTO user_phone VALUES(11,'0967890232');
 
-INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('pen'    ,'0.7','1000','100','pencil','50',0,0);
-INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('eraser' ,'0.2','1000','50','eraser','65',0,0);
-INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('ruler'  ,'0.1','600','75','ruler','110',0,0);
-INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper','1000',0,0);
-INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('magzine','0.9','10000','150','book','40',0,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('pen'    ,'0.7','1000','100','pencil','50',1,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('eraser' ,'0.2','1000','50','eraser','65',1,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('ruler'  ,'0.1','600','75','ruler','110',1,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('paper'  ,'1','1000','1','paper','1000',1,0);
+INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('magzine','0.9','10000','150','book','40',1,0);
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('notebook','0.5','800','200','stationery','75',0,0);
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('marker','0.3','500','120','marker','90',0,0);
 INSERT INTO product (product_name, discount, stock, original_price, tags, sales, likes, avg_score) VALUES('stapler','0.4','300','180','office','60',0,0);
