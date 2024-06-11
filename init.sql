@@ -169,6 +169,21 @@ END;
 $$
 DELIMITER ;
 
+-- after_price:
+DELIMITER $$
+CREATE TRIGGER after_update_price
+BEFORE UPDATE ON product
+FOR EACH ROW
+BEGIN
+    SET NEW.selling_price = NEW.discount * NEW.original_price;
+    
+    UPDATE cart_item
+    SET prices = NEW.selling_price * quantity
+    WHERE product_ID = OLD.product_ID;
+END;
+$$
+DELIMITER ;
+
 -- delete_order_n_payinginfo:
 DELIMITER $$
 CREATE TRIGGER delete_order_n_payinginfo
